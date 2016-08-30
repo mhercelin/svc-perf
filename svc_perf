@@ -16,7 +16,7 @@
 # 
 set -e
 
-. /etc/zabbix/externalscripts/svc_perf.conf
+. $ZABBIX_SCRIPTS/svc_perf.conf
 
 CLUSTER=$1
 
@@ -25,6 +25,6 @@ ERR_LOG=/var/cache/zabbix/svc_perf.$CLUSTER.errlog
 
 echo >>"$ERR_LOG"
 date >>"$ERR_LOG"
-/usr/bin/python /etc/zabbix/externalscripts/svc_perf_wbem.py --cluster $CLUSTER --user "$SVC_USER" --password "$SVC_PWD" --cachefile "$CACHE_FILE" 2>>"$ERR_LOG" | zabbix_sender -z 127.0.0.1 -I 127.0.0.1 -T -i - >>"$ERR_LOG" 2>&1
+/usr/bin/python $ZABBIX_SCRIPTS/svc_perf_wbem.py --cluster $CLUSTER --user "$SVC_USER" --password "$SVC_PWD" --cachefile "$CACHE_FILE" 2>>"$ERR_LOG" | zabbix_sender -z 127.0.0.1 -I 127.0.0.1 -T -i - >>"$ERR_LOG" 2>&1
 date >>"$ERR_LOG"
 

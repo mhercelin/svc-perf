@@ -22,13 +22,13 @@
 
 set -e
 
-. /etc/zabbix/externalscripts/svc_perf.conf
+. $ZABBIX_SCRIPTS/svc_perf.conf
 
 ERR_LOG=/var/cache/zabbix/svc_perf_graph.log
 
 echo >>"$ERR_LOG"
 date >>"$ERR_LOG"
-/usr/bin/python /etc/zabbix/externalscripts/svc_perf_graph.py "$DEBUG" --clusters "$1" --user "$SVC_USER" --password "$SVC_PWD" --zabbix_url "$ZABBIX_SERVER" --zabbix_user "$ZABBIX_USER" --zabbix_password "$ZABBIX_PASSWORD" >>"$ERR_LOG" 2>&1
+/usr/bin/python $ZABBIX_SCRIPTS/svc_perf_graph.py "$DEBUG" --clusters "$1" --user "$SVC_USER" --password "$SVC_PWD" --zabbix_url "$ZABBIX_SERVER" --zabbix_user "$ZABBIX_USER" --zabbix_password "$ZABBIX_PASSWORD" >>"$ERR_LOG" 2>&1
 date >>"$ERR_LOG"
  
 

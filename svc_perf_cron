@@ -1,3 +1,4 @@
+### Replace /etc/zabbix/externalscripts to /var/lib/zabbix/externalscripts in CentOS
 # Get Storwize perf stats. Interval specified here must match Storwize stats refresh interval ("startstats -interval")
 1-59/3 * * * * root /etc/zabbix/externalscripts/svc_perf svc1-blk > /dev/null 2>&1 || :
 2-59/3 * * * * root /etc/zabbix/externalscripts/svc_perf dev-svc1 > /dev/null 2>&1 || :

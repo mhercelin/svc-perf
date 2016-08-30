@@ -17,7 +17,7 @@
 #
 # Key-based SSH access to Storwize CLI needs to be configured for zabbix user (see /var/lib/zabbix/.ssh)
 #
-SVC_STATUS_AWK=/etc/zabbix/externalscripts/svc_status.awk
+SVC_STATUS_AWK=$ZABBIX_SCRIPTS/svc_status.awk
 
 # run lseventlog command with ssh
 EVENTS=$(ssh -q -o PasswordAuthentication=no $1 lseventlog -expired no -fixed no -monitoring no -message no -order severity)
